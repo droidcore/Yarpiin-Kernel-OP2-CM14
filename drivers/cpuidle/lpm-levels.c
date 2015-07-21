@@ -389,7 +389,7 @@ static uint64_t get_cluster_sleep_time(struct lpm_cluster *cluster,
 	}
 
 	cpumask_and(&online_cpus_in_cluster,
-			&cluster->num_childs_in_sync, cpu_online_mask);
+			&cluster->num_children_in_sync, cpu_online_mask);
 
 	for_each_cpu(cpu, &online_cpus_in_cluster) {
 		td = &per_cpu(tick_cpu_device, cpu);
