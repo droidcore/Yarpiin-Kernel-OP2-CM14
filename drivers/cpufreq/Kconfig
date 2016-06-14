@@ -162,6 +162,10 @@ config CPU_FREQ_DEFAULT_GOV_SMARTMAX
 	help
 	  Use the CPUFreq governor 'smartmax' as default
 	
+config CPU_FREQ_DEFAULT_GOV_DARKNESS
+	bool "darkness"
+	select CPU_FREQ_GOV_DARKNESS
+
 endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
@@ -245,6 +249,9 @@ config CPU_FREQ_GOV_INTERACTIVE
 
 config CPU_FREQ_GOV_LIGHTNING
 	tristate "'lightning' cpufreq policy governor"
+
+config CPU_FREQ_GOV_DARKNESS
+	tristate "'darkness' cpufreq policy governor"
 
 config CPU_FREQ_GOV_CONSERVATIVE
 	tristate "'conservative' cpufreq governor"
