@@ -278,8 +278,8 @@ static void mdss_fb_set_bl_brightness(struct led_classdev *led_cdev,
 		count = 1;
 	#endif
 	if (backlight_dimmer) {
-		if (value < 3)
-			bl_lvl = 1;
+		if (value < 4)
+			bl_lvl = 6;
 		else
 			MDSS_BRIGHT_TO_BL_DIMMER(bl_lvl, value);
 	} else {
