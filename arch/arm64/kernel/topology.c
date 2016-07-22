@@ -324,7 +324,7 @@ static void __init parse_dt_cpu_power(void)
 		cpu_capacity(cpu) = capacity;
 	}
 
-	/* compute a middle_capacity factor that will ensure that the capacity
+	/* Compute a middle_capacity factor that will ensure that the capacity
 	 * of an 'average' CPU of the system will be as close as possible to
 	 * SCHED_POWER_SCALE, which is the default value, but with the
 	 * constraint explained near table_efficiency[].
