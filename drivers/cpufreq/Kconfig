@@ -166,6 +166,13 @@ config CPU_FREQ_DEFAULT_GOV_DARKNESS
 	bool "darkness"
 	select CPU_FREQ_GOV_DARKNESS
 
+
+config CPU_FREQ_DEFAULT_GOV_HYPERX
+        bool "HYPERX"
+        select CPU_FREQ_GOV_HYPERX
+        ---help---
+          Use the CPUFreq governor 'HYPERX' as default.
+
 config CPU_FREQ_DEFAULT_GOV_IMPULSE
 	bool "impulse"
 	select CPU_FREQ_GOV_IMPULSE
@@ -389,6 +396,15 @@ config CPU_BOOST
 config GENERIC_CPUFREQ_CPU0
 	tristate "Generic CPU0 cpufreq driver"
 	depends on HAVE_CLK && REGULATOR && PM_OPP && OF
+
+config CPU_FREQ_GOV_HYPERX
+        tristate "'HYPERX' cpufreq governor"
+        depends on CPU_FREQ
+        ---help---
+          'HYPERX' - a tweaked "ondemand" based smart and smooth optimized governor!
+
+           If in doubt, say Y.
+	  
 	help
 	  This adds a generic cpufreq driver for CPU0 frequency management.
 	  It supports both uniprocessor (UP) and symmetric multiprocessor (SMP)
