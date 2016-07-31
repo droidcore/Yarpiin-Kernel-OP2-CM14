@@ -207,7 +207,7 @@ static void hima_hotplug_work_fn(struct work_struct *work)
 
 static void __ref hima_hotplug_suspend(void)
 {
-	max_cpus_online = 3;
+	max_cpus_online = 2;
 	screen_on = 0;
 }
 
