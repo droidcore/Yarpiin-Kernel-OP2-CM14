@@ -22,6 +22,7 @@ obj-$(CONFIG_CPU_FREQ_GOV_ELECTROACTIVE)	+= cpufreq_electroactive.o
 obj-$(CONFIG_CPU_FREQ_GOV_DESPAIR)	+= cpufreq_despair.o
 obj-$(CONFIG_CPU_FREQ_GOV_BIOSHOCK)	+= cpufreq_bioshock.o
 obj-$(CONFIG_CPU_FREQ_GOV_SMARTMAX)	+= cpufreq_smartmax.o
+obj-$(CONFIG_CPU_FREQ_GOV_CHILL)        += cpufreq_chill.o
 obj-$(CONFIG_CPU_BOOST)			+= cpu-boost.o
 obj-$(CONFIG_CPU_FREQ_GOV_HYPERX)  	   += cpufreq_hyperx.o
 obj-$(CONFIG_GENERIC_CPUFREQ_CPU0)	+= cpufreq-cpu0.o
