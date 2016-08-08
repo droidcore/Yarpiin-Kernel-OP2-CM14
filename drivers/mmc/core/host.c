@@ -709,16 +709,18 @@ static ssize_t store_scale_down_in_low_wr_load(struct device *dev,
 {
 	struct mmc_host *host = cls_dev_to_mmc_host(dev);
 	unsigned long value;
+	int retval = -EINVAL;
 
 	if (!host)
-		return -EINVAL;
+		goto out;
 
 	if (!host->card || kstrtoul(buf, 0, &value))
-		return -EINVAL;
+		goto out;
 
 	host->clk_scaling.scale_down_in_low_wr_load = value;
 
-	return count;
+out:
+	return retval;
 }
 
 static ssize_t show_up_threshold(struct device *dev,
@@ -929,7 +931,7 @@ int mmc_add_host(struct mmc_host *host)
 	host->clk_scaling.up_threshold = 35;
 	host->clk_scaling.down_threshold = 5;
 	host->clk_scaling.polling_delay_ms = 100;
-	host->clk_scaling.scale_down_in_low_wr_load = true;
+	host->clk_scaling.scale_down_in_low_wr_load = false;
 
 	err = sysfs_create_group(&host->class_dev.kobj, &clk_scaling_attr_grp);
 	if (err)
