@@ -24,7 +24,7 @@
 	interrupt-parent = <&intc>;
 
 	chosen {
-		bootargs = "boot_cpus=0,1,2,3,4,5,6,7 sched_enable_hmp=1 sched_enable_power_aware=1";
+		bootargs = "sched_enable_hmp=1 sched_enable_power_aware=1";
 	};
 
 	aliases {
@@ -311,7 +311,6 @@
 			reg = <0 0x06200000 0 0x100000>;
 			label = "memory_nvbackup";
 		};
-		/*#endif  VENDOR_EDIT*/
 		dfps_data_mem: dfps_data_mem@0 {
 			linux,reserve-contiguous-region;
 			linux,reserve-region;
@@ -975,7 +974,7 @@
 		reg-names = "wdt-base";
 		interrupts = <0 3 0>, <0 4 0>;
 //liyunbing@BSP, 2015/05/21, WDT bark-time too short cause some task timeout  
-		#qcom,bark-time = <11000>;
+                #qcom,bark-time = <11000>;
                 qcom,bark-time = <15000>;
 		qcom,pet-time = <10000>;
 		qcom,ipi-ping;
@@ -1541,16 +1540,16 @@
 			qcom,cdc-reset-gpio = <&msm_gpio 68 0>;
 
 			cdc-vdd-buck-supply = <&pm8994_s5>;
-			qcom,cdc-vdd-buck-voltage = <1800000 2150000>;
+			qcom,cdc-vdd-buck-voltage = <2150000 2150000>;
 			qcom,cdc-vdd-buck-current = <650000>;
 
 			cdc-vdd-tx-h-supply = <&pm8994_s4>;
 			qcom,cdc-vdd-tx-h-voltage = <1800000 1800000>;
-			qcom,cdc-vdd-tx-h-current = <45000>;
+			qcom,cdc-vdd-tx-h-current = <25000>;
 
 			cdc-vdd-rx-h-supply = <&pm8994_s4>;
 			qcom,cdc-vdd-rx-h-voltage = <1800000 1800000>;
-			qcom,cdc-vdd-rx-h-current = <45000>;
+			qcom,cdc-vdd-rx-h-current = <25000>;
 
 			cdc-vddpx-1-supply = <&pm8994_s4>;
 			qcom,cdc-vddpx-1-voltage = <1800000 1800000>;
@@ -1679,7 +1678,7 @@
 		reg-names = "core", "phy_csr";
 		// #ifdef VENDOR_EDIT
 		/*modify by jiachenghui from 0x00D191A4 to 0x00D191A7 for OTG 2015-04-22*/
-                /*change HS DC voltage-level to 0x0011 by jiachenghui for OTG detect issue 2015-05-23*/
+		/*change HS DC voltage-level to 0x0011 by jiachenghui for OTG detect issue 2015-05-23*/
 		qcom,hsphy-init = <0x00D187A7>;
                 //#endif /*VENDOR_EDIT*/
 		vdd-supply = <&pm8994_s2_corner>;
@@ -2745,8 +2744,8 @@
 				//#ifdef VENDOR_EDIT  
 				/*zhiguang.su@MultiMedia.AudioDrv,changed for quat i2s */
 				"active",
-				"quat_mi2s_sleep",
-				"quat_mi2s_active";
+				"quat_mi2s_active",
+				"quat_aux_active";
 				//#endif
 //#ifdef VENDOR_EDIT 				
 //pinctrl-0 = <&pri_mi2s_sleep>, <&pri_mi2s_sd0_sleep>,
@@ -2768,8 +2767,8 @@
 //#endif				
 //#ifdef VENDOR_EDIT  
 /*zhiguang.su@MultiMedia.AudioDrv changed for quat i2s */
-		pinctrl-4 = <&quat_mi2s_sleep>, <&quat_mi2s_mclk_sleep>, <&quat_mi2s_sd0_sleep> , <&quat_mi2s_sd1_sleep>;
-		pinctrl-5 = <&quat_mi2s_active>, <&quat_mi2s_mclk_active>, <&quat_mi2s_sd0_active> , <&quat_mi2s_sd1_active>;			
+		pinctrl-4 = <&quat_mi2s_active>, <&quat_mi2s_mclk_active>, <&quat_mi2s_sd0_active> , <&quat_mi2s_sd1_active>;
+		pinctrl-5 = <&quat_mi2s_active>, <&quat_mi2s_mclk_active>, <&quat_mi2s_sd0_active> , <&quat_mi2s_sd1_active> ,  <&sec_aux_pcm_active>, <&sec_aux_pcm_din_active>;
 //#endif
 		asoc-platform = <&pcm0>, <&pcm1>, <&pcm2>, <&voip>, <&voice>,
 				<&loopback>, <&compress>, <&hostless>,
